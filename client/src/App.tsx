@@ -3,11 +3,11 @@ import { Link, Route, Switch, useLocation } from "wouter";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Check, ChevronDown, Clock3, Dumbbell, Instagram, Mail, MapPin, Menu, MoveUpRight, Phone, Sparkles, Users, X, Zap } from "lucide-react";
 
 const img = {
-  hero: "/manus-storage/hero-athlete_fb411bc2.jpeg",
-  interior: "/manus-storage/gym-interior_5eddb57d.jpg",
-  strength: "/manus-storage/athlete-training_5e33f17c.jpg",
-  cardio: "/manus-storage/cardio_990d2382.jpg",
-  functional: "/manus-storage/functional_079a3f7b.jpg",
+  hero: "/assets/hero-athlete_fb411bc2.jpeg",
+  interior: "/assets/gym-interior_5eddb57d.jpg",
+  strength: "/assets/athlete-training_5e33f17c.jpg",
+  cardio: "/assets/cardio_990d2382.jpg",
+  functional: "/assets/functional_079a3f7b.jpg",
 };
 const instagram = "https://www.instagram.com/extra_fitness_vip_gym/";
 const maps = "https://www.google.com/maps/search/?api=1&query=Extra+Fitness+VIP+Rue+la+Libert%C3%A9+Sahloul+4054+Sousse+Tunisia";
@@ -19,7 +19,7 @@ const training = [
 
 function SEO({ title, description }: { title: string; description: string }) { useEffect(() => { document.title = title; document.querySelector('meta[name="description"]')?.setAttribute("content", description); }, [title, description]); return null; }
 function Label({ children, light = false }: { children: ReactNode; light?: boolean }) { return <div className={`section-label ${light ? "section-label--light" : ""}`}><span />{children}</div>; }
-function Logo() { return <Link href="/" className="brand-mark" aria-label="Extra Fitness VIP home"><img src="/manus-storage/logo_6ffb8399.png" alt="Extra Fitness VIP" /></Link>; }
+function Logo() { return <Link href="/" className="brand-mark" aria-label="Extra Fitness VIP home"><img src="/assets/logo_6ffb8399.png" alt="Extra Fitness VIP" /></Link>; }
 function Header() {
   const [path] = useLocation(); const [open, setOpen] = useState(false); const links = [["Home", "/"], ["About", "/about"], ["Training", "/training"], ["Gallery", "/gallery"]];
   return <header className="site-header"><div className="container header-inner"><Logo /><nav className="desktop-nav">{links.map(([name, href]) => <Link key={href} href={href} className={path === href ? "active" : ""}>{name}</Link>)}</nav><div className="header-actions"><a className="header-phone" href="tel:+21656668888"><Phone size={15} />+216 56 66 88 88</a><Link href="/contact" className="button button--lime button--small">Join us <ArrowUpRight size={15} /></Link><button className="menu-button" onClick={() => setOpen(!open)} aria-label="Toggle menu">{open ? <X /> : <Menu />}</button></div></div>{open && <nav className="mobile-nav">{links.map(([name, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{name}<ArrowRight size={16} /></Link>)}<Link href="/contact" className="mobile-nav__cta" onClick={() => setOpen(false)}>Start your journey <ArrowUpRight size={16} /></Link></nav>}</header>;
